@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: 
+  message: 
+  sent_at: 2022-02-26 23:12:57
+
+two:
+  name: 
+  message: 
+  sent_at: 2022-02-26 23:12:57
