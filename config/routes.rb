@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users
-  root to: "sales#index"
-  get 'sales/index'
+  root to: 'sales#index'
+  resources :campaigns
+
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
 end
