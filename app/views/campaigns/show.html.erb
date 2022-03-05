@@ -1,3 +1,4 @@
+
 <h1 class="ms-5 my-3"> Current campaign</h1>
 <div class="card w-75 bg-light ps-3 ms-5" style="margin: 0 auto">
 <div>
@@ -5,9 +6,12 @@
   <p><%= @campaign.message %></p>
   <p><%= @campaign.sent_at %></p>
 </div>
-<div class="d-flex ">
+
+  <div class="d-flex ">
+
   <p><%= link_to "Edit", edit_campaign_path(@campaign), class: "btn btn-primary mx-2" %></p>
   <p><%=  link_to "Destroy", campaign_path(@campaign), method: :delete, class: "btn btn-danger" %>
+
 </div>
 </div>
 
