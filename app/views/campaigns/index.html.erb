@@ -8,19 +8,17 @@
     <p><%= link_to "New campaign", new_campaign_path, class:"link-light text-uppercase text-decoration-none " %></p>
 
   </div>
-  <% if @campaigns.length > 0 %>
 
   <% @campaigns.each do |campaign| %>
 
     <div class="px-2 bg-light">
     <span class="m-2 list-group-item">
+
       <%= link_to campaign.name, campaign, class:"link-info text-uppercase text-decoration-none" %>
+
     </span>
     </div>
-  <% end %>
-  <% else %>
-
- <p class="text-center"> You have no campaign. create one by clicking the new campaign button</p>
 
   <% end %>
+
 </div>

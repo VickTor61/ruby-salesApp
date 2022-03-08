@@ -1,8 +1,8 @@
 class CampaignsController < ApplicationController
-  before_action :authenticate_user!, :except => [:index]
+  before_action :authenticate_user!
 
   def index
-    @campaigns = current_user ? current_user.campaigns.all : []
+    @campaigns = current_user.campaigns.all
   end
 
   def show
