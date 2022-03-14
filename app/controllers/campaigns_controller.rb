@@ -15,7 +15,6 @@ class CampaignsController < ApplicationController
 
   def create
     @campaign = current_user.campaigns.new(campaign_params)
-
     if @campaign.save!
       redirect_to @campaign
     else
@@ -28,6 +27,7 @@ class CampaignsController < ApplicationController
  end
 
   def update
+
     @campaign = current_user.campaigns.find(params[:id])
 
     if @campaign.update(campaign_params)

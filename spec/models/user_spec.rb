@@ -1,17 +1,25 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  context "Before authentication" do
-    it 'has correct passwords' do
-      user = User.create(
-        email: "test@example.com",
-        password: "password123",
-        password_confirmation: "password123"
-      )
-      expect(user.valid_password?("password123")).to be_truthy
+  describe 'Model.user' do
+     let(:user1) { FactoryBot.create :user}
+   
+     it 'should have a user created after creation' do
+       expect(User.all.count).to eq(1)
+     end
+   
+     it 'should not create a user without an email address' do
+      user1.email = nil
+      expect(user1).to_not be_valid
+     end
 
-      # pending "add some examples to (or delete) #{__FILE__}"
-       end
-  end
+     it 'should not create a user without a password' do
+       user1.password = nil
+       expect(user1).to_not be_valid
+     end
 
-  end
+     it 'should not create a user without a valid password confirmation' do
+       expect(user1.valid_password?('osasenaga')).to be_truthy
+     end
+   end
+ end

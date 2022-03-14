@@ -1,0 +1,15 @@
+
+[1mFrom:[0m C:/Users/Victor Enoma/RubymineProjects/salesManagement/sales-app/spec/controller/campaigns_spec.rb:20 :
+
+    [1;34m15[0m:       get [33m:index[0m
+    [1;34m16[0m:       expect(response).to render_template([31m[1;31m'[0m[31mindex[1;31m'[0m[31m[0m)
+    [1;34m17[0m:     [32mend[0m
+    [1;34m18[0m: 
+    [1;34m19[0m:     it [31m[1;31m'[0m[31mshould render a campaign with an id[1;31m'[0m[31m[0m [32mdo[0m
+ => [1;34m20[0m:       binding.pry
+    [1;34m21[0m:       get [33m:show[0m, [35mparams[0m: { [35mid[0m: user.campaigns.first.id }
+    [1;34m22[0m:       expect(response).to render_template([31m[1;31m'[0m[31mshow[1;31m'[0m[31m[0m)
+    [1;34m23[0m:     [32mend[0m
+    [1;34m24[0m: 
+    [1;34m25[0m:     it [31m[1;31m'[0m[31mshould render create new campaign page[1;31m'[0m[31m[0m [32mdo[0m
+
