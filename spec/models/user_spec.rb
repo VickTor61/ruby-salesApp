@@ -2,12 +2,8 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   describe 'Model.user' do
-     let(:user1) { FactoryBot.create :user}
-   
-     it 'should have a user created after creation' do
-       expect(User.all.count).to eq(1)
-     end
-   
+     let(:user1) { FactoryBot.create :user }
+
      it 'should not create a user without an email address' do
       user1.email = nil
       expect(user1).to_not be_valid
