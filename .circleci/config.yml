@@ -45,7 +45,7 @@ jobs:
     environment:
       BUNDLE_JOBS: "3"
       BUNDLE_RETRY: "3"
-      PGHOST: localhost
+      PGHOST: 127.0.0.1
       PGUSER: postgres
       PGPASSWORD: Osasenaga2002
       RAILS_ENV: test
