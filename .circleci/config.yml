@@ -19,9 +19,9 @@ jobs:
       # use the node orb to install our packages
       # specifying that we use `yarn` and to cache dependencies with `yarn.lock`
       # learn more: https://circleci.com/docs/2.0/caching/
-      - node/install-packages:
-          pkg-manager: yarn
-          cache-key: "yarn.lock"
+#      - node/install-packages:
+#          pkg-manager: yarn
+#          cache-key: "yarn.lock"
 
   test:  # our next job, called "test"
     # we run "parallel job containers" to enable speeding up our tests;
@@ -39,7 +39,7 @@ jobs:
           password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
         environment: # add POSTGRES environment variables.
           POSTGRES_USER: postgres
-          POSTGRES_DB: postgres
+          POSTGRES_DB: postgres_test
           POSTGRES_PASSWORD: Osasenaga2002
     # environment variables specific to Ruby/Rails, applied to the primary container.
     environment:
