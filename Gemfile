@@ -39,9 +39,6 @@ gem 'bootsnap', '>= 1.1.0', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'factory_bot_rails'
-  gem 'rails-controller-testing'
-  gem 'rspec-rails', '~> 5.0.0'
 end
 
 group :development do
@@ -54,7 +51,7 @@ group :test do
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
-  gem 'webdrivers'
+  gem 'chromedriver-helper'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -62,6 +59,4 @@ gem 'autoprefixer-rails'
 gem 'bootstrap', '~> 5.1.3'
 gem 'devise'
 gem 'jquery-rails'
-gem 'rspec_junit_formatter'
-gem 'pry', '~> 0.13.1'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
