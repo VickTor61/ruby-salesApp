@@ -1,54 +1,53 @@
 class CampaignsController < ApplicationController
-  # before_action :authenticate_user!
+  before_action :authenticate_user!
 
- def index
-    @campaigns = Campaign.all
- end
+  def index
+    @campaigns = current_user.campaigns.all
+  end
 
- def show
- @campaign = Campaign.find(params[:id])
- end
+  def show
+    @campaign = current_user.campaigns.find(params[:id])
+  end
 
   def new
-    @campaign = Campaign.new
+    @campaign = current_user.campaigns.new
   end
 
   def create
-    user_signed_in?
-    @campaign = Campaign.new(campaign_params)
-
+    @campaign = current_user.campaigns.new(campaign_params)
     if @campaign.save!
       redirect_to @campaign
     else
-      render :new, status: :unprocessable_entity
+      render :new
     end
   end
 
   def edit
-   @campaign = Campaign.find(params[:id])
- end
+    @campaign = current_user.campaigns.find(params[:id])
+  end
 
- def update
-   @campaign = Campaign.find(params[:id])
+  def update
 
-   if @campaign.update(campaign_params)
-     redirect_to(@campaign)
-   else
-     render :edit
-   end
- end
+    @campaign = current_user.campaigns.find(params[:id])
 
- def destroy
-   @campaign = Campaign.find(params[:id])
-   @campaign.destroy
-   flash[:success] = "Campaign successfully deleted."
-   redirect_to root_path
- end
+    if @campaign.update(campaign_params)
+      redirect_to(@campaign)
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @campaign = current_user.campaigns.find(params[:id])
+    @campaign.destroy
+    flash[:success] = "Campaign successfully deleted."
+    redirect_to root_path
+  end
 
 
   private
 
- def campaign_params
-   params.require(:campaign).permit(:name, :message)
- end
+  def campaign_params
+    params.require(:campaign).permit(:name, :message, user_id: current_user.id)
+  end
 end
