@@ -4,5 +4,5 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :campaigns, foreign_key: current_user.id
-end
+  has_many :campaigns
+  end
