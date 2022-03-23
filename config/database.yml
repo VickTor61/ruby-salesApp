@@ -1,7 +1,7 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: database_name_development
+  database: sales_app_development
   pool: 5
   host: localhost
   username: postgres
@@ -10,7 +10,7 @@ development:
 test:
   adapter: postgresql
   encoding: unicode
-  database: database_name_test
+  database: sales_app_test
   pool: 5
   username: postgres
   password: Osasenaga2002
@@ -20,5 +20,3 @@ staging:
 
 production:
   url: <%= ENV['DATABASE_URL'] %>
-
-
