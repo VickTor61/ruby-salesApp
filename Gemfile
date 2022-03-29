@@ -62,6 +62,7 @@ gem 'autoprefixer-rails'
 gem 'bootstrap', '~> 5.1.3'
 gem 'devise'
 gem 'jquery-rails'
+gem 'rake'
 gem 'rspec_junit_formatter'
 gem 'pry', '~> 0.13.1'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
