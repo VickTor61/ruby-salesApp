@@ -5,4 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :campaigns
+  has_many :user_roles
+  has_many :roles, through: :user_roles
 end
