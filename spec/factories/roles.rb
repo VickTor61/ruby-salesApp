@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :role do
-    name { "MyString" }
-    slug { "MyString" }
+    name { "admin" }
+    slug { "myadmin" }
   end
 end
