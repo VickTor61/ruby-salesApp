@@ -7,4 +7,8 @@ class User < ApplicationRecord
   has_many :campaigns
   has_many :user_roles
   has_many :roles, through: :user_roles
+
+  def admin?
+    roles.where(slug: 'admin').any?
+  end
 end

@@ -64,4 +64,5 @@ gem 'devise'
 gem 'jquery-rails'
 gem 'rspec_junit_formatter'
 gem 'pry', '~> 0.13.1'
+gem 'pundit'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
