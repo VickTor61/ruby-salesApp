@@ -2,7 +2,7 @@
 
   <% if @user.errors.any? %>
     <div id="error_explanation">
-      <!--      <h2><%#= pluralize(@user.errors.count, "error") %> prohibited this comment from being saved:</h2>-->
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this comment from being saved:</h2>
 
       <ul>
         <% @user.errors.full_messages.each do |message| %>
@@ -16,7 +16,7 @@
 
   <div class="form-group-sm p-2">
     <%= form.label :email %><br>
-    <%= form.text_field :email, class: 'form-control'%>
+    <%= form.text_field :email, class: 'form-control' %>
   </div>
 
 

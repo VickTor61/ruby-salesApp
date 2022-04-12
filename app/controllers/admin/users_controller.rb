@@ -7,7 +7,8 @@ module Admin
     end
 
     def show
-      @user = authorize User.find(params[:id])
+      @user = User.find(params[:id])
+      authorize @user
     end
 
     def new
