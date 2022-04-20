@@ -12,13 +12,13 @@ jobs:
       BUNDLE_PATH: vendor/bundle
 
     docker:
-      - image: circleci/ruby:2.7.5-stretch
+      - image: cimg/ruby:2.7.5-node
         environment:
           PGHOST: 127.0.0.1
           PGUSER: circleci
           PGPASSWORD:
 
-      - image: circleci/postgres:12-ram
+      - image: cimg/postgres:14.0
         environment:
           POSTGRES_USER: circleci
           POSTGRES_PASSWORD:
