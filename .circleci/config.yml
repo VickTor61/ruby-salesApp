@@ -41,7 +41,7 @@ jobs:
           keys:
             - coverage-cache-master-coverage
 
-      - run: gem install bundler:2.1.4
+      - run: gem install bundler:2.3.4
 
       - run:
           name: Bundle Install
@@ -57,6 +57,6 @@ jobs:
       - run: sudo apt-get update
       - run: sudo apt-get install postgresql-client
       - run: dockerize -wait tcp://localhost:5432 -timeout 1m
-      - run: RAILS_ENV=test bin/rails db:create --trace
-      - run: RAILS_ENV=test bin/rails db:schema:load --trace
+      - run: RAILS_ENV=test bundle exec rails db:create --trace
+      - run: RAILS_ENV=test bundle exec rails db:schema:load --trace
       - run: bundle exec rails spec
