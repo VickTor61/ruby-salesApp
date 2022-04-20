@@ -3,17 +3,12 @@ development:
   encoding: unicode
   database: sales_app_development
   pool: 5
-  host: localhost
-  username: postgres
-  password: Osasenaga2002
+  username: <%= ENV['DATABASE_USERNAME'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
 
 test:
-  adapter: postgresql
-  encoding: unicode
+  <<: *default
   database: sales_app_test
-  pool: 5
-  username: postgres
-  password: Osasenaga2002
 
 staging:
   url: <%= ENV['DATABASE_URL'] %>
