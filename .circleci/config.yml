@@ -13,13 +13,18 @@ jobs:
 
     docker:
       - image: cimg/ruby:2.7.5-node
+        auth:
+          username: mydockerhub-user
+          password: $DOCKERHUB_PASSWORD
+          
+      - image: cimg/postgres:14.0
+        auth:
+          username: mydockerhub-user
+          password: $DOCKERHUB_PASSWORD
         environment:
           PGHOST: 127.0.0.1
           PGUSER: circleci
           PGPASSWORD:
-
-      - image: cimg/postgres:14.0
-        environment:
           POSTGRES_USER: circleci
           POSTGRES_PASSWORD:
 
