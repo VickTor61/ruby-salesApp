@@ -16,7 +16,7 @@ jobs:
         auth:
           username: mydockerhub-user
           password: $DOCKERHUB_PASSWORD
-          
+
       - image: cimg/postgres:14.0
         auth:
           username: mydockerhub-user
@@ -54,6 +54,5 @@ jobs:
       - run: sudo apt-get update
       - run: sudo apt-get install postgresql-client
       - run: dockerize -wait tcp://localhost:5432 -timeout 1m
-      - run: RAILS_ENV=test bin/rails db:create --trace
       - run: RAILS_ENV=test bin/rails db:schema:load --trace
       - run: bundle exec rails spec
