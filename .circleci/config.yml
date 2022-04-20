@@ -20,15 +20,16 @@ jobs:
         environment:
           RAILS_ENV: test
           PGHOST: 127.0.0.1
-          PGUSER: <%= ENV['DATABASE_USERNAME'] %>
+          PGUSER: root
 
       - image: cimg/postgres:14.0
         auth:
           username: mydockerhub-user
           password: $DOCKERHUB_PASSWORD
         environment:
-          POSTGRES_USER: <%= ENV['DATABASE_USERNAME'] %>
-          POSTGRES_PASSWORD: <%= ENV['DATABASE_PASSWORD'] %>
+          PGPASSWORD:
+          POSTGRES_USER: root
+          POSTGRES_PASSWORD:
 
     steps:
       - checkout
