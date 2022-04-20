@@ -61,6 +61,7 @@ end
 gem 'autoprefixer-rails'
 gem 'bootstrap', '~> 5.1.3'
 gem 'devise'
+gem 'dotenv-rails', groups: [:development, :test]
 gem 'jquery-rails'
 gem 'rspec_junit_formatter'
 gem 'pry', '~> 0.13.1'
