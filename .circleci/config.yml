@@ -25,7 +25,6 @@ jobs:
 
     steps:
       - checkout
-
       - restore_cache:
           keys:
             - gem-cache-{{ checksum "Gemfile.lock" }}
