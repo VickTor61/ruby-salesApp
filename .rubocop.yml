@@ -9,12 +9,12 @@ AllCops:
   NewCops: enable
 
   Exclude:
-    - 'db/**/*'
-    - 'config/**/*'
-    - 'script/**/*'
-    - 'bin/{rails,rake}'
+    - db/**/*
+    - config/**/*
+    - script/**/*
+    - bin/{rails,rake}
     - !ruby/regexp /old_and_unused\.rb$/
-    - 'generated/**/*.rb'
+    - generated/**/*.rb
     - vendor/bundle/**/*
 
 
