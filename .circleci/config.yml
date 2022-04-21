@@ -27,7 +27,6 @@ jobs:
           username: mydockerhub-user
           password: $DOCKERHUB_PASSWORD
         environment:
-          PGPASSWORD:
           POSTGRES_USER: root
           POSTGRES_PASSWORD:
 
