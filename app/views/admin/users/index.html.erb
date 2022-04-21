@@ -1,0 +1,27 @@
+<div class="container">
+  <h1>I'm from the users view in admin</h1>
+
+  <div>
+    Create User:
+    <p><%= link_to "New User", new_admin_user_path, class: "text-uppercase text-decoration-none " %></p>
+  </div>
+
+  <% @users.each do |user| %>
+  <span class=" list-group-item d-flex justify-content-between align-items-center py-3">
+
+      <% if policy(user).show? %>
+        <%= link_to user.email, admin_user_path(user.id), class: "link-info text-uppercase text-decoration-none" %>
+      <% end %>
+
+    <div class="d-flex align-items-center ">
+      <% if policy(user).destroy? %>
+        <p style="margin: 0"><%= link_to "Destroy", admin_user_path(user), method: :delete, class: "btn btn-danger align-self-center" %></p>
+      <% end %>
+
+      <% if policy(user).update? %>
+        <p style="margin: 0"><%= link_to "Edit", edit_admin_user_path(user), class: "btn btn-primary mx-2" %></p>
+      <% end %>
+    </div>
+  </span>
+  <% end %>
+</div>

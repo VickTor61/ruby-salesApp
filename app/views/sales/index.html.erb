@@ -4,6 +4,10 @@
     <div class="list-group col-md-3 " id="list-tab" role="tablist">
       <%= link_to "Home", "/", class: "list-group-item list-group-item-action active " %>
       <%= link_to "campaigns", "/campaigns", class: "list-group-item list-group-item-action " %>
+
+      <% if user_signed_in? && current_user.admin? %>
+        <%= link_to "users", "/admin/users", class: "list-group-item list-group-item-action " %>
+      <% end %>
     </div>
     <div class="col-md-9 col-md-offset-3 content bg-body">
       <h1>Hello rails 5</h1>
