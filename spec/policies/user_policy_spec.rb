@@ -1,7 +1,8 @@
 # frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe UserPolicy, type: :policy do
+RSpec.describe UserPolicy, type: :policy do # rubocop:todo Metrics/BlockLength
   let(:user) { FactoryBot.create(:user) }
   let(:admin) { FactoryBot.create(:user_role) }
   subject { described_class }

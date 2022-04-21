@@ -1,11 +1,12 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe Admin::UsersController, type: :controller do
+RSpec.describe Admin::UsersController, type: :controller do # rubocop:todo Metrics/BlockLength
   let(:user_admin) { FactoryBot.create :user_role }
   let(:user) { FactoryBot.create(:user) }
 
-  context 'admin ' do
-
+  context 'admin ' do # rubocop:todo Metrics/BlockLength
     before do
       @request.env['devise.mapping'] = Devise.mappings[user_admin.user]
       sign_in user_admin.user
@@ -38,7 +39,8 @@ RSpec.describe Admin::UsersController, type: :controller do
       it 'should create a new user' do
         expect do
           post :create,
-               params: { user: { email: 'newemail@gmail.com', password: 'username', password_confirmation: 'username' } }
+               params: { user: { email: 'newemail@gmail.com', password: 'username',
+                                 password_confirmation: 'username' } }
         end.to change(User, :count).by(1)
       end
 
@@ -46,7 +48,6 @@ RSpec.describe Admin::UsersController, type: :controller do
         post :create, params: { user: FactoryBot.attributes_for(:user) }
         expect(response).to redirect_to(admin_users_path)
       end
-
     end
 
     context '#edit' do
@@ -62,12 +63,10 @@ RSpec.describe Admin::UsersController, type: :controller do
         expect(response).to have_http_status(302)
         expect(response).to redirect_to admin_users_path
       end
-
     end
-
   end
 
-  context 'regular user' do
+  context 'regular user' do # rubocop:todo Metrics/BlockLength
     before do
       @request.env['devise.mapping'] = Devise.mappings[user]
       sign_in user
@@ -121,5 +120,4 @@ RSpec.describe Admin::UsersController, type: :controller do
 
     # end
   end
-
 end

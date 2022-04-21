@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe CampaignsController, type: :controller do
-  context '#index ' do
+RSpec.describe CampaignsController, type: :controller do # rubocop:todo Metrics/BlockLength
+  context '#index ' do # rubocop:todo Metrics/BlockLength
     let(:user) { FactoryBot.create :user, email: 'newmail@gmail.com' }
-    let(:campaign) { FactoryBot.create :campaign, name: "second", message: 'second campaign created', user: user }
+    let(:campaign) { FactoryBot.create :campaign, name: 'second', message: 'second campaign created', user: user }
 
     before do
       @request.env['devise.mapping'] = Devise.mappings[user]
@@ -31,7 +33,8 @@ RSpec.describe CampaignsController, type: :controller do
       expect do
         post :create,
              params: { campaign: { name: campaign.name, message: campaign.message,
-                                   user_id: user.id } } end.to change(user.campaigns, :count).by(1)
+                                   user_id: user.id } }
+      end.to change(user.campaigns, :count).by(1)
     end
 
     it 'edits a users campaign' do
@@ -40,7 +43,9 @@ RSpec.describe CampaignsController, type: :controller do
     end
 
     it 'updates a campaign' do
-      put :update, params: { id: user.campaigns.first.id, campaign: FactoryBot.attributes_for(:campaign, name: 'updated campaign' ) }
+      put :update,
+          params: { id: user.campaigns.first.id,
+                    campaign: FactoryBot.attributes_for(:campaign, name: 'updated campaign') }
       expect(user.campaigns.first.name).to eq('updated campaign')
     end
 

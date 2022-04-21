@@ -1,0 +1,10 @@
+require:
+  - rubocop-rails
+
+AllCops:
+  NewCops: enable
+
+Layout/LineLength:
+  Max: 120
+Layout/MethodLength:
+  Max: 20
