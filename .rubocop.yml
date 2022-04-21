@@ -8,7 +8,6 @@ require:
 AllCops:
   NewCops: enable
 
-
   Exclude:
     - 'db/**/*'
     - 'config/**/*'
@@ -16,6 +15,8 @@ AllCops:
     - 'bin/{rails,rake}'
     - !ruby/regexp /old_and_unused\.rb$/
     - 'generated/**/*.rb'
+    - gemfiles/vendor/bundle/**/*
+
 
 
 Style/Documentation:
