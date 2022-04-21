@@ -60,3 +60,22 @@ jobs:
       - run: RAILS_ENV=test bundle exec rails db:create --trace
       - run: RAILS_ENV=test bundle exec rails db:schema:load --trace
       - run: bundle exec rails spec
+
+rubocop:
+  executor: default
+  steps:
+    - attach_workspace:
+        at: ~/
+    - configure_bundler
+    - run:
+        name: Rubocop
+        command: bundle exec rubocop
+
+workflows:
+  version: 2
+  integration:
+    jobs:
+      - build
+      - rubocop:
+          requuires:
+            - build

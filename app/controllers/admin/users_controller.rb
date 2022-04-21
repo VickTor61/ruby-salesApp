@@ -1,6 +1,7 @@
+# frozen_string_literal: true
+
 module Admin
   class UsersController < ApplicationController
-
     def index
       @users = User.all
       authorize @users
@@ -20,7 +21,7 @@ module Admin
       @user = User.new(user_params)
       authorize @user
       if @user.save
-        flash[:success] = "User created!"
+        flash[:success] = 'User created!'
         redirect_to admin_users_path
       else
         render :new
@@ -46,7 +47,7 @@ module Admin
       @user = User.find(params[:id])
       authorize @user
       @user.destroy
-      flash[:success] = "User successfully deleted."
+      flash[:success] = 'User successfully deleted.'
       redirect_to admin_users_path
     end
 
@@ -55,6 +56,5 @@ module Admin
     def user_params
       params.require(:user).permit(:email, :password, :password_confirmation)
     end
-
   end
 end

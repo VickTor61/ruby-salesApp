@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CampaignsController < ApplicationController
   before_action :authenticate_user!
 
@@ -27,7 +29,6 @@ class CampaignsController < ApplicationController
   end
 
   def update
-
     @campaign = current_user.campaigns.find(params[:id])
 
     if @campaign.update(campaign_params)
@@ -40,10 +41,9 @@ class CampaignsController < ApplicationController
   def destroy
     @campaign = current_user.campaigns.find(params[:id])
     @campaign.destroy
-    flash[:success] = "Campaign successfully deleted."
+    flash[:success] = 'Campaign successfully deleted.'
     redirect_to root_path
   end
-
 
   private
 
