@@ -53,26 +53,8 @@ jobs:
           paths:
             - vendor/bundle
             - ~/.bundle
-
-  rubocop:
-    executor: default
-    steps:
-      - attach_workspace:
-          at: ~/
-      - configure_bundler
-      - run:
-          name: Rubocop
-          command: bundle exec rubocop
-
-  workflows:
-    version: 2
-    integration:
-      jobs:
-        - build
-        - rubocop:
-            requuires:
-              - build
-
+      # Ensure Rubocop has linted all Ruby files
+      - run: bundle exec rubocop
       - run: sudo apt-get update
       - run: sudo apt-get install postgresql-client
       - run: dockerize -wait tcp://localhost:5432 -timeout 1m
