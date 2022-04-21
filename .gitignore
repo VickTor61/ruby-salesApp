@@ -10,9 +10,6 @@
 #Ignore env config
 .env
 
-# Ignore rubocop_todo.yml cofig
-.rubocop_todo.yml
-
 # Ignore the default SQLite database.
 /db/*.sqlite3
 /db/*.sqlite3-journal
