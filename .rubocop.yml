@@ -1,1 +1,12 @@
-require: rubocop-rails
+inherit_from:
+  - .rubocop_todo.yml
+  - .shared.yml
+
+
+require:
+  - rubocop-rails
+  - rubocop-rspec
+
+Style/Documentation:
+  Enabled: false
+

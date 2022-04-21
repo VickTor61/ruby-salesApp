@@ -3,12 +3,12 @@
 require 'rails_helper'
 
 RSpec.describe 'admin/users/index.html.erb', type: :view do
-  let(:user_admin) { FactoryBot.create :user_role }
-  let(:user) { FactoryBot.create(:user) }
+  let(:user_admin) { create :user_role }
+  let(:user) { create(:user) }
 
   context "#{admin}index" do
-    before(:each) do
-      @request.env['devise.mapping'] = Devise.mappings[user_admin.user]
+    before do
+      @request.env['devise.mapping'] = Devise.mappings[user_admin.user] # rubocop:todo RSpec/InstanceVariable
       sign_in user_admin.user
 
       assign(:users, [
@@ -25,18 +25,18 @@ RSpec.describe 'admin/users/index.html.erb', type: :view do
              ])
     end
 
-    it 'should show links for a an admin user' do
+    it 'shows links for a an admin user' do
       enable_pundit(view, user_admin.user)
       render template: '/admin/users/index.html.erb'
       expect(rendered).to include('Destroy')
       expect(rendered).to include('Edit')
     end
 
-    it 'should not show links for regular user' do
+    it 'does not show links for regular user' do
       enable_pundit(view, user)
       render template: '/admin/users/index.html.erb'
-      expect(rendered).to_not include('delete')
-      expect(rendered).to_not include('Edit')
+      expect(rendered).not_to include('delete')
+      expect(rendered).not_to include('Edit')
     end
   end
 end

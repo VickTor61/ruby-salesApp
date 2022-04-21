@@ -3,70 +3,106 @@
 require 'rails_helper'
 
 RSpec.describe UserPolicy, type: :policy do
-  let(:user) { FactoryBot.create(:user) }
-  let(:admin) { FactoryBot.create(:user_role) }
   subject { described_class }
 
+  let(:user) { create(:user) }
+  let(:admin) { create(:user_role) }
+
   permissions :index? do
-    it 'denies access to non admin users' do
-      expect(subject).not_to permit(user)
+    # rubocop:todo RSpec/RepeatedExample
+    it 'denies access to non admin users' do # rubocop:todo RSpec/RepeatedDescription, RSpec/RepeatedExample
+      expect(subject).not_to permit(user) # rubocop:todo RSpec/NamedSubject
     end
-    it 'allows access to admin users' do
-      expect(subject).to permit(admin.user)
+    # rubocop:enable RSpec/RepeatedExample
+
+    # rubocop:todo RSpec/RepeatedExample
+    it 'allows access to admin users' do # rubocop:todo RSpec/RepeatedDescription, RSpec/RepeatedExample
+      expect(subject).to permit(admin.user) # rubocop:todo RSpec/NamedSubject
     end
+    # rubocop:enable RSpec/RepeatedExample
   end
 
   permissions :show? do
-    it 'denies access to non admin users' do
-      expect(subject).not_to permit(user)
+    # rubocop:todo RSpec/RepeatedExample
+    it 'denies access to non admin users' do # rubocop:todo RSpec/RepeatedDescription, RSpec/RepeatedExample
+      expect(subject).not_to permit(user) # rubocop:todo RSpec/NamedSubject
     end
-    it 'allows access to admin users' do
-      expect(subject).to permit(admin.user)
+    # rubocop:enable RSpec/RepeatedExample
+
+    # rubocop:todo RSpec/RepeatedExample
+    it 'allows access to admin users' do # rubocop:todo RSpec/RepeatedDescription, RSpec/RepeatedExample
+      expect(subject).to permit(admin.user) # rubocop:todo RSpec/NamedSubject
     end
+    # rubocop:enable RSpec/RepeatedExample
   end
 
   permissions :new? do
-    it 'denies access to non admin users' do
-      expect(subject).not_to permit(user)
+    # rubocop:todo RSpec/RepeatedExample
+    it 'denies access to non admin users' do # rubocop:todo RSpec/RepeatedDescription, RSpec/RepeatedExample
+      expect(subject).not_to permit(user) # rubocop:todo RSpec/NamedSubject
     end
-    it 'allows access to admin users' do
-      expect(subject).to permit(admin.user)
+    # rubocop:enable RSpec/RepeatedExample
+
+    # rubocop:todo RSpec/RepeatedExample
+    it 'allows access to admin users' do # rubocop:todo RSpec/RepeatedDescription, RSpec/RepeatedExample
+      expect(subject).to permit(admin.user) # rubocop:todo RSpec/NamedSubject
     end
+    # rubocop:enable RSpec/RepeatedExample
   end
 
   permissions :create? do
-    it 'denies access to non admin users' do
-      expect(subject).not_to permit(user)
+    # rubocop:todo RSpec/RepeatedExample
+    it 'denies access to non admin users' do # rubocop:todo RSpec/RepeatedDescription, RSpec/RepeatedExample
+      expect(subject).not_to permit(user) # rubocop:todo RSpec/NamedSubject
     end
-    it 'allows access to admin users' do
-      expect(subject).to permit(admin.user)
+    # rubocop:enable RSpec/RepeatedExample
+
+    # rubocop:todo RSpec/RepeatedExample
+    it 'allows access to admin users' do # rubocop:todo RSpec/RepeatedDescription, RSpec/RepeatedExample
+      expect(subject).to permit(admin.user) # rubocop:todo RSpec/NamedSubject
     end
+    # rubocop:enable RSpec/RepeatedExample
   end
 
   permissions :edit? do
-    it 'denies access to non admin users' do
-      expect(subject).not_to permit(user)
+    # rubocop:todo RSpec/RepeatedExample
+    it 'denies access to non admin users' do # rubocop:todo RSpec/RepeatedDescription, RSpec/RepeatedExample
+      expect(subject).not_to permit(user) # rubocop:todo RSpec/NamedSubject
     end
-    it 'allows access to admin users' do
-      expect(subject).to permit(admin.user)
+    # rubocop:enable RSpec/RepeatedExample
+
+    # rubocop:todo RSpec/RepeatedExample
+    it 'allows access to admin users' do # rubocop:todo RSpec/RepeatedDescription, RSpec/RepeatedExample
+      expect(subject).to permit(admin.user) # rubocop:todo RSpec/NamedSubject
     end
+    # rubocop:enable RSpec/RepeatedExample
   end
 
   permissions :update? do
-    it 'denies access to non admin users' do
-      expect(subject).not_to permit(user)
+    # rubocop:todo RSpec/RepeatedExample
+    it 'denies access to non admin users' do # rubocop:todo RSpec/RepeatedDescription, RSpec/RepeatedExample
+      expect(subject).not_to permit(user) # rubocop:todo RSpec/NamedSubject
     end
-    it 'allows access to admin users' do
-      expect(subject).to permit(admin.user)
+    # rubocop:enable RSpec/RepeatedExample
+
+    # rubocop:todo RSpec/RepeatedExample
+    it 'allows access to admin users' do # rubocop:todo RSpec/RepeatedDescription, RSpec/RepeatedExample
+      expect(subject).to permit(admin.user) # rubocop:todo RSpec/NamedSubject
     end
+    # rubocop:enable RSpec/RepeatedExample
   end
 
   permissions :destroy? do
-    it 'denies access to non admin users' do
-      expect(subject).not_to permit(user)
+    # rubocop:todo RSpec/RepeatedExample
+    it 'denies access to non admin users' do # rubocop:todo RSpec/RepeatedDescription, RSpec/RepeatedExample
+      expect(subject).not_to permit(user) # rubocop:todo RSpec/NamedSubject
     end
-    it 'allows access to admin users' do
-      expect(subject).to permit(admin.user)
+    # rubocop:enable RSpec/RepeatedExample
+
+    # rubocop:todo RSpec/RepeatedExample
+    it 'allows access to admin users' do # rubocop:todo RSpec/RepeatedDescription, RSpec/RepeatedExample
+      expect(subject).to permit(admin.user) # rubocop:todo RSpec/NamedSubject
     end
+    # rubocop:enable RSpec/RepeatedExample
   end
 end
