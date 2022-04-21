@@ -1,12 +1,26 @@
 inherit_from:
   - .rubocop_todo.yml
-  - .shared.yml
 
+#inherit_gem:
+#  rubocop-discourse: default.yml
 
 require:
   - rubocop-rails
   - rubocop-rspec
 
+AllCops:
+  NewCops: enable
+  DisabledByDefault: true
+
+
+  Exclude:
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'script/**/*'
+    - 'bin/{rails,rake}'
+    - !ruby/regexp /old_and_unused\.rb$/
+    - 'generated/**/*.rb'
+
+
 Style/Documentation:
   Enabled: false
-
