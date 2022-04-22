@@ -3,9 +3,9 @@
 require 'rails_helper'
 
 RSpec.describe CampaignsController, type: :controller do # rubocop:todo Metrics/BlockLength
-  context '#index ' do # rubocop:todo Metrics/BlockLength
-    let(:user) { FactoryBot.create :user, email: 'newmail@gmail.com' }
-    let(:campaign) { FactoryBot.create :campaign, name: 'second', message: 'second campaign created', user: user }
+  describe '#index' do # rubocop:todo Metrics/BlockLength
+    let(:user) { create :user, email: 'newmail@gmail.com' }
+    let(:campaign) { create :campaign, name: 'second', message: 'second campaign created', user: user }
 
     before do
       @request.env['devise.mapping'] = Devise.mappings[user]
@@ -13,18 +13,18 @@ RSpec.describe CampaignsController, type: :controller do # rubocop:todo Metrics/
       user.campaigns << campaign
     end
 
-    it 'should render template' do
+    it 'renders template' do
       get :index
       expect(response).to render_template('index')
       expect(response).to have_http_status(:ok)
     end
 
-    it 'should render a campaign with an id' do
+    it 'renders a campaign with an id' do
       get :show, params: { id: user.campaigns.first.id }
       expect(response).to render_template('show')
     end
 
-    it 'should render create new campaign page' do
+    it 'renders create new campaign page' do
       get :new
       expect(response).to render_template('new')
     end
@@ -45,13 +45,13 @@ RSpec.describe CampaignsController, type: :controller do # rubocop:todo Metrics/
     it 'updates a campaign' do
       put :update,
           params: { id: user.campaigns.first.id,
-                    campaign: FactoryBot.attributes_for(:campaign, name: 'updated campaign') }
+                    campaign: attributes_for(:campaign, name: 'updated campaign') }
       expect(user.campaigns.first.name).to eq('updated campaign')
     end
 
     it 'deletes a campaign' do
       delete :destroy, params: { id: user.campaigns.first.id }
-      expect(response).to have_http_status(302)
+      expect(response).to have_http_status(:found)
       expect(response).to redirect_to('/')
     end
   end

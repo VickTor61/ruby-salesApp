@@ -2,71 +2,14 @@
 
 require 'rails_helper'
 
-RSpec.describe UserPolicy, type: :policy do # rubocop:todo Metrics/BlockLength
-  let(:user) { FactoryBot.create(:user) }
-  let(:admin) { FactoryBot.create(:user_role) }
-  subject { described_class }
+RSpec.describe UserPolicy, type: :policy do
+  subject(:user_policy) { described_class }
 
-  permissions :index? do
-    it 'denies access to non admin users' do
-      expect(subject).not_to permit(user)
-    end
-    it 'allows access to admin users' do
-      expect(subject).to permit(admin.user)
-    end
-  end
+  let(:admin) { create(:user_role) }
 
-  permissions :show? do
-    it 'denies access to non admin users' do
-      expect(subject).not_to permit(user)
-    end
-    it 'allows access to admin users' do
-      expect(subject).to permit(admin.user)
-    end
-  end
-
-  permissions :new? do
-    it 'denies access to non admin users' do
-      expect(subject).not_to permit(user)
-    end
-    it 'allows access to admin users' do
-      expect(subject).to permit(admin.user)
-    end
-  end
-
-  permissions :create? do
-    it 'denies access to non admin users' do
-      expect(subject).not_to permit(user)
-    end
-    it 'allows access to admin users' do
-      expect(subject).to permit(admin.user)
-    end
-  end
-
-  permissions :edit? do
-    it 'denies access to non admin users' do
-      expect(subject).not_to permit(user)
-    end
-    it 'allows access to admin users' do
-      expect(subject).to permit(admin.user)
-    end
-  end
-
-  permissions :update? do
-    it 'denies access to non admin users' do
-      expect(subject).not_to permit(user)
-    end
-    it 'allows access to admin users' do
-      expect(subject).to permit(admin.user)
-    end
-  end
-
-  permissions :destroy? do
-    it 'denies access to non admin users' do
-      expect(subject).not_to permit(user)
-    end
-    it 'allows access to admin users' do
-      expect(subject).to permit(admin.user)
+  permissions :index?, :show?, :new?, :create?, :edit?, :update?, :destroy? do
+    it 'permits admin user' do
+      expect(user_policy).to permit(admin.user)
     end
   end
 end
