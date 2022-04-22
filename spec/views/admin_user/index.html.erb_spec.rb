@@ -6,7 +6,7 @@ RSpec.describe 'admin/users/index.html.erb', type: :view do # rubocop:todo Metri
   let(:user_admin) { FactoryBot.create :user_role }
   let(:user) { FactoryBot.create(:user) }
 
-  context "#{admin}index" do # rubocop:todo Metrics/BlockLength
+  context 'admin index' do # rubocop:todo Metrics/BlockLength
     before(:each) do
       @request.env['devise.mapping'] = Devise.mappings[user_admin.user]
       sign_in user_admin.user
