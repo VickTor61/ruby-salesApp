@@ -1,103 +1,102 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe Admin::UsersController, type: :controller do
-  let(:user_admin) { FactoryBot.create :user_role }
-  let(:user) { FactoryBot.create(:user) }
+RSpec.describe Admin::UsersController, type: :controller do # rubocop:todo Metrics/BlockLength
+  let(:user_admin) { create :user_role }
+  let(:user) { create(:user) }
 
-  context 'admin ' do
-
+  context 'when admin' do # rubocop:todo Metrics/BlockLength
     before do
       @request.env['devise.mapping'] = Devise.mappings[user_admin.user]
       sign_in user_admin.user
     end
 
-    context '#index' do
-      it ' should render the index page to admin user' do
+    describe '#index' do
+      it 'renders the index page to admin user' do
         get :index
         expect(response).to render_template('index')
         expect(response).to have_http_status(:ok)
       end
     end
 
-    context '#show' do
-      it 'should render the show page to admin user' do
+    describe '#show' do
+      it 'renders the show page to admin user' do
         get :show, params: { id: user_admin.user.id }
         expect(response).to render_template('show')
       end
     end
 
-    context '#new' do
-      it 'should render new user page' do
+    describe '#new' do
+      it 'renders new user page' do
         get :new
         expect(response).to render_template('new')
         expect(assigns(:user)).to be_a_new(User)
       end
     end
 
-    context '#create' do
-      it 'should create a new user' do
+    describe '#create' do
+      it 'creates a new user' do
         expect do
           post :create,
-               params: { user: { email: 'newemail@gmail.com', password: 'username', password_confirmation: 'username' } }
+               params: { user: { email: 'newemail@gmail.com', password: 'username',
+                                 password_confirmation: 'username' } }
         end.to change(User, :count).by(1)
       end
 
-      it 'should redirect to the new user path' do
-        post :create, params: { user: FactoryBot.attributes_for(:user) }
+      it 'redirects to the new user path' do
+        post :create, params: { user: attributes_for(:user) }
         expect(response).to redirect_to(admin_users_path)
       end
-
     end
 
-    context '#edit' do
-      it 'should ' do
-        put :update, params: { id: User.first.id, user: FactoryBot.attributes_for(:user, email: 'testemail@gmail.com') }
+    describe '#edit' do
+      it 'edit the user attributes' do
+        put :update, params: { id: User.first.id, user: attributes_for(:user, email: 'testemail@gmail.com') }
         expect(User.first.email).to eq('testemail@gmail.com')
       end
     end
 
-    context '#destroy' do
-      it 'should delete a user' do
+    describe '#destroy' do
+      it 'deletes a user' do
         delete :destroy, params: { id: user.id }
-        expect(response).to have_http_status(302)
+        expect(response).to have_http_status(:found)
         expect(response).to redirect_to admin_users_path
       end
-
     end
-
   end
 
-  context 'regular user' do
+  context 'when regular user' do # rubocop:todo Metrics/BlockLength
     before do
       @request.env['devise.mapping'] = Devise.mappings[user]
       sign_in user
     end
 
-    context '#index' do
-      it ' should not render the index page to a regular user' do
+    describe '#index' do
+      it 'does not render the index page to a regular user' do
         get :index
-        expect(response).to_not render_template('index')
-        expect(response).to_not have_http_status(:ok)
+        expect(response).not_to render_template('index')
+        expect(response).not_to have_http_status(:ok)
       end
     end
 
-    context 'show' do
-      it 'should not render the show page to a regular user' do
+    describe 'show' do
+      it 'does not render the show page to a regular user' do
         get :show, params: { id: user.id }
-        expect(response).to_not render_template('show')
+        expect(response).not_to render_template('show')
       end
     end
 
-    context '#new' do
-      it 'should not render new user page' do
+    describe '#new' do
+      it 'does not render new user page' do
         get :new
-        expect(response).to_not render_template('new')
-        expect(assigns(user: nil)).to_not be_a_new(User)
+        expect(response).not_to render_template('new')
+        expect(assigns(user: nil)).not_to be_a_new(User)
       end
     end
 
-    context '#create' do
-      it 'should no create a new user' do
+    describe '#create' do
+      it 'noes create a new user' do
         expect do
           post :create,
                params: { user: { email: nil, password: nil, password_confirmation: nil } }
@@ -105,21 +104,18 @@ RSpec.describe Admin::UsersController, type: :controller do
       end
     end
 
-    context '#edit' do
-      it 'should not edit a user that\'s not an admin' do
-        put :update, params: { id: User.first.id, user: FactoryBot.attributes_for(:user, email: 'testemail@gmail.com') }
-        expect(response).to_not be_successful
+    describe '#edit' do
+      it 'does not edit a user that\'s not an admin' do
+        put :update, params: { id: User.first.id, user: attributes_for(:user, email: 'testemail@gmail.com') }
+        expect(response).not_to be_successful
       end
     end
 
-    context '#destroy' do
-      it 'should delete a user' do
+    describe '#destroy' do
+      it 'deletes a user' do
         delete :destroy, params: { id: user.id }
-        expect(response).to_not redirect_to admin_users_path
+        expect(response).not_to redirect_to admin_users_path
       end
     end
-
-    # end
   end
-
 end

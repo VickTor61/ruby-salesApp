@@ -1,11 +1,13 @@
-class User < ApplicationRecord
+# frozen_string_literal: true
+
+class User < ApplicationRecord # rubocop:todo Style/Documentation
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :campaigns
-  has_many :user_roles
+  has_many :campaigns # rubocop:todo Rails/HasManyOrHasOneDependent
+  has_many :user_roles # rubocop:todo Rails/HasManyOrHasOneDependent
   has_many :roles, through: :user_roles
 
   def admin?

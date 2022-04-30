@@ -1,21 +1,23 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
   describe 'Model.user' do
-    let(:user1) { FactoryBot.create :user }
+    let(:user1) { create :user }
 
-    it 'should not create a user without an email address' do
+    it 'does not create a user without an email address' do
       user1.email = nil
-      expect(user1).to_not be_valid
+      expect(user1).not_to be_valid
     end
 
-    it 'should not create a user without a password' do
+    it 'does not create a user without a password' do
       user1.password = nil
-      expect(user1).to_not be_valid
+      expect(user1).not_to be_valid
     end
 
-    it 'should not create a user without a valid password confirmation' do
-      expect(user1.valid_password?('osasenaga')).to be_truthy
+    it 'does not create a user without a valid password confirmation' do
+      expect(user1).to be_valid_password('osasenaga')
     end
   end
 end

@@ -1,0 +1,21 @@
+require:
+  - rubocop-rails
+  - rubocop-rspec
+
+AllCops:
+  NewCops: enable
+
+Layout/LineLength:
+  Max: 120
+Metrics/MethodLength:
+  IgnoredMethods: [ 'describe', 'context' ]
+RSpec/InstanceVariable:
+  Enabled: false
+RSpec/MultipleExpectations:
+  Enabled: false
+RSpec/FilePath:
+  Enabled: false
+RSpec/NamedSubject:
+  Enabled: false
+RSpec/VariableName:
+  Enabled: false

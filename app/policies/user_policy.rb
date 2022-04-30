@@ -1,5 +1,6 @@
 # frozen_string_literal: true
-class UserPolicy < ApplicationPolicy
+
+class UserPolicy < ApplicationPolicy # rubocop:todo Style/Documentation
   # class Scope < Scope
   #   # NOTE: Be explicit about which records you allow access to!
   #   # def resolve
@@ -34,5 +35,4 @@ class UserPolicy < ApplicationPolicy
   def destroy?
     user.admin?
   end
-
 end
