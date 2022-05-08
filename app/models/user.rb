@@ -9,8 +9,13 @@ class User < ApplicationRecord # rubocop:todo Style/Documentation
   has_many :campaigns # rubocop:todo Rails/HasManyOrHasOneDependent
   has_many :user_roles # rubocop:todo Rails/HasManyOrHasOneDependent
   has_many :roles, through: :user_roles
+  accepts_nested_attributes_for :roles, allow_destroy: true
 
   def admin?
     roles.where(slug: 'admin').any?
+  end
+
+  def super_admin?
+    roles.where(slug: 'superadmin').any?
   end
 end
