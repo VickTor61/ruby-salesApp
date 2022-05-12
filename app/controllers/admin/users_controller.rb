@@ -38,6 +38,7 @@ module Admin
       authorize @user
 
       if @user.update(user_params)
+        flash[:success] = 'Successfully updated user' # rubocop:todo Rails/I18nLocaleTexts
         redirect_to admin_users_path
       else
         render :edit

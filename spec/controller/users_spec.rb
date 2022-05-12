@@ -5,6 +5,38 @@ require 'rails_helper'
 RSpec.describe Admin::UsersController, type: :controller do # rubocop:todo Metrics/BlockLength
   let(:user_admin) { create :user_role }
   let(:user) { create(:user) }
+  let(:user_test) do
+    create(:user, email: 'superadmin@gmail.com',
+                  password: 'superadmin',
+                  password_confirmation: 'superadmin')
+  end
+  let(:role_test) { create(:role, name: 'super', slug: 'superadmin') }
+  let(:super_admin) { create(:user_role, user: user_test, role: role_test) }
+
+  context 'when super admin' do
+    before do
+      @request.env['devise.mapping'] = Devise.mappings[super_admin.user]
+      sign_in super_admin.user
+    end
+
+    describe 'create' do
+      it 'adds role to a user' do
+        expect do
+          post :create,
+               params: { user: { email: 'newemail@gmail.com', password: 'username',
+                                 password_confirmation: 'username', role_id: role_test } }
+        end.to change(User, :count).by(1)
+      end
+    end
+
+    describe 'update' do
+      it 'adds roles to a user during update' do
+        put :update, params: { id: User.first.id,
+                               user: { email: 'testemail@gmail.com', role_ids: [role_test.id] } }
+        expect(User.first.role_ids).to eq([role_test.id])
+      end
+    end
+  end
 
   context 'when admin' do # rubocop:todo Metrics/BlockLength
     before do
@@ -50,8 +82,8 @@ RSpec.describe Admin::UsersController, type: :controller do # rubocop:todo Metri
       end
     end
 
-    describe '#edit' do
-      it 'edit the user attributes' do
+    describe 'update' do
+      it 'change the user attributes' do
         put :update, params: { id: User.first.id, user: attributes_for(:user, email: 'testemail@gmail.com') }
         expect(User.first.email).to eq('testemail@gmail.com')
       end
