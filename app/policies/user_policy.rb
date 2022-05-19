@@ -1,38 +1,31 @@
 # frozen_string_literal: true
 
 class UserPolicy < ApplicationPolicy # rubocop:todo Style/Documentation
-  # class Scope < Scope
-  #   # NOTE: Be explicit about which records you allow access to!
-  #   # def resolve
-  #   #   scope.all
-  #   # end
-  # end
-
   def index?
-    user.admin?
+    user.admin? || user.super_admin?
   end
 
   def show?
-    user.admin?
+    user.admin? || user.super_admin?
   end
 
   def new?
-    user.admin?
+    user.admin? || user.super_admin?
   end
 
   def create?
-    user.admin?
+    user.admin? || user.super_admin?
   end
 
   def edit?
-    user.admin?
+    user.admin? || user.super_admin?
   end
 
   def update?
-    user.admin?
+    user.admin? || user.super_admin?
   end
 
   def destroy?
-    user.admin?
+    user.admin? || user.super_admin?
   end
 end

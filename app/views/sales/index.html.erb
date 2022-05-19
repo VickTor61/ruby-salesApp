@@ -5,7 +5,7 @@
       <%= link_to "Home", "/", class: "list-group-item list-group-item-action active " %>
       <%= link_to "campaigns", "/campaigns", class: "list-group-item list-group-item-action " %>
 
-      <% if user_signed_in? && current_user.admin? %>
+      <% if user_signed_in? && (current_user.admin? || current_user.super_admin?) %>
         <%= link_to "users", "/admin/users", class: "list-group-item list-group-item-action " %>
       <% end %>
     </div>

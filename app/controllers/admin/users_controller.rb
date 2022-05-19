@@ -36,7 +36,9 @@ module Admin
     def update
       @user = User.find(params[:id])
       authorize @user
+
       if @user.update(user_params)
+        flash[:success] = 'Successfully updated user' # rubocop:todo Rails/I18nLocaleTexts
         redirect_to admin_users_path
       else
         render :edit
@@ -54,7 +56,8 @@ module Admin
     private
 
     def user_params
-      params.require(:user).permit(:email, :password, :password_confirmation)
+      params.require(:user).permit(:email, :password, :password_confirmation,
+                                   role_ids: [])
     end
   end
 end

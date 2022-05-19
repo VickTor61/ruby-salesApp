@@ -31,6 +31,9 @@
     <%= form.text_field :password_confirmation, class: 'form-control' %>
   </div>
 
+  <% if current_user.super_admin? %>
+    <%= form.collection_check_boxes :role_ids, Role.all, :id, :slug %>
+  <% end %>
 
   <div class="form-group-sm p-3">
     <%= form.submit %>
