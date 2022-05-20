@@ -19,3 +19,5 @@ RSpec/NamedSubject:
   Enabled: false
 RSpec/VariableName:
   Enabled: false
+Style/Documentation:
+  Enabled: false
