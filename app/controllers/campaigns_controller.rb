@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class CampaignsController < ApplicationController # rubocop:todo Style/Documentation
+class CampaignsController < ApplicationController
   before_action :authenticate_user!
 
   def index

@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-class CreateRoles < ActiveRecord::Migration[5.2] # rubocop:todo Style/Documentation
+class CreateRoles < ActiveRecord::Migration[5.2]
   def change
-    create_table :roles do |t| # rubocop:todo Rails/CreateTableWithTimestamps
+    create_table :roles do |t|
       t.string :name
       t.string :slug
     end
