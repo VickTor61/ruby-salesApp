@@ -10,45 +10,58 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_220_329_223_611) do
+ActiveRecord::Schema.define(version: 2022_05_20_161154) do
+
   # These are extensions that must be enabled in order to support this database
-  enable_extension 'plpgsql'
+  enable_extension "plpgsql"
 
-  create_table 'campaigns', force: :cascade do |t|
-    t.string 'name'
-    t.string 'message'
-    t.datetime 'sent_at'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.integer 'user_id'
+  create_table "campaigns", force: :cascade do |t|
+    t.string "name"
+    t.string "message"
+    t.datetime "sent_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
   end
 
-  create_table 'roles', force: :cascade do |t|
-    t.string 'name'
-    t.string 'slug'
-    t.index ['name'], name: 'index_roles_on_name', unique: true
-    t.index ['slug'], name: 'index_roles_on_slug', unique: true
+  create_table "contact_lists", force: :cascade do |t|
+    t.string "name"
+    t.string "slug"
+    t.bigint "campaign_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["campaign_id"], name: "index_contact_lists_on_campaign_id"
+    t.index ["name"], name: "index_contact_lists_on_name", unique: true
+    t.index ["slug"], name: "index_contact_lists_on_slug", unique: true
   end
 
-  create_table 'user_roles', force: :cascade do |t|
-    t.bigint 'user_id'
-    t.bigint 'role_id'
-    t.index ['role_id'], name: 'index_user_roles_on_role_id'
-    t.index ['user_id'], name: 'index_user_roles_on_user_id'
+  create_table "roles", force: :cascade do |t|
+    t.string "name"
+    t.string "slug"
+    t.index ["name"], name: "index_roles_on_name", unique: true
+    t.index ["slug"], name: "index_roles_on_slug", unique: true
   end
 
-  create_table 'users', force: :cascade do |t|
-    t.string 'email', default: '', null: false
-    t.string 'encrypted_password', default: '', null: false
-    t.string 'reset_password_token'
-    t.datetime 'reset_password_sent_at'
-    t.datetime 'remember_created_at'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.index ['email'], name: 'index_users_on_email', unique: true
-    t.index ['reset_password_token'], name: 'index_users_on_reset_password_token', unique: true
+  create_table "user_roles", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "role_id"
+    t.index ["role_id"], name: "index_user_roles_on_role_id"
+    t.index ["user_id"], name: "index_user_roles_on_user_id"
   end
 
-  add_foreign_key 'user_roles', 'roles'
-  add_foreign_key 'user_roles', 'users'
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  add_foreign_key "contact_lists", "campaigns"
+  add_foreign_key "user_roles", "roles"
+  add_foreign_key "user_roles", "users"
 end

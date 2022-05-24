@@ -22,4 +22,5 @@ RSpec/NamedSubject:
 RSpec/VariableName:
   Enabled: false
 Rails/HasManyOrHasOneDependent:
+Style/Documentation:
   Enabled: false
