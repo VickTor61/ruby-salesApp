@@ -1,4 +1,4 @@
 # frozen_string_literal: true
 
-module CampaignsHelper # rubocop:todo Style/Documentation
+module CampaignsHelper
 end

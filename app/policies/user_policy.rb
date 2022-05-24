@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class UserPolicy < ApplicationPolicy # rubocop:todo Style/Documentation
+class UserPolicy < ApplicationPolicy
   def index?
     user.admin? || user.super_admin?
   end
