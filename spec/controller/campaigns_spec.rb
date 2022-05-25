@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe CampaignsController, type: :controller do # rubocop:todo Metrics/BlockLength
-  describe '#index' do # rubocop:todo Metrics/BlockLength
+  describe '#index' do
     let(:user) { create :user, email: 'newmail@gmail.com' }
     let(:campaign) { create :campaign, name: 'second', message: 'second campaign created', user: user }
 

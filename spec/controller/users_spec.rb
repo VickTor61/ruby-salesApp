@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe Admin::UsersController, type: :controller do # rubocop:todo Metrics/BlockLength
+RSpec.describe Admin::UsersController, type: :controller do
   let(:user_admin) { create :user_role }
   let(:user) { create(:user) }
   let(:user_test) do
