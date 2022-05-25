@@ -22,5 +22,8 @@ RSpec/NamedSubject:
 RSpec/VariableName:
   Enabled: false
 Rails/HasManyOrHasOneDependent:
+  Enabled: false
 Style/Documentation:
+  Enabled: false
+Style/FrozenStringLiteralComment:
   Enabled: false
