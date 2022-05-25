@@ -1,3 +1,5 @@
+inherit_from: .rubocop_todo.yml
+
 require:
   - rubocop-rails
   - rubocop-rspec
@@ -19,5 +21,6 @@ RSpec/NamedSubject:
   Enabled: false
 RSpec/VariableName:
   Enabled: false
+Rails/HasManyOrHasOneDependent:
 Style/Documentation:
   Enabled: false
