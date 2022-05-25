@@ -5,9 +5,9 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-
-  has_many :campaigns # rubocop:todo Rails/HasManyOrHasOneDependent
-  has_many :user_roles # rubocop:todo Rails/HasManyOrHasOneDependent
+  has_many :contact_lists
+  has_many :campaigns
+  has_many :user_roles
   has_many :roles, through: :user_roles, dependent: :destroy
   accepts_nested_attributes_for :roles, allow_destroy: true
 

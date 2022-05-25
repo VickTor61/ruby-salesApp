@@ -5,4 +5,6 @@ class ContactList < ApplicationRecord
   validates :slug, presence: true, uniqueness: true
 
   belongs_to :campaign
+  belongs_to :user
+
 end
