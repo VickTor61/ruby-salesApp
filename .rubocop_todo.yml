@@ -49,7 +49,7 @@ Style/MethodDefParentheses:
 # Offense count: 2
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle, SupportedStyles.
-Style/MultilineOperationIndentation:
+Layout/MultilineOperationIndentation:
   Enabled: false
 
 # Offense count: 10
@@ -70,6 +70,9 @@ Layout/SpaceAroundOperators:
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle, EnforcedStyleForEmptyBraces, SupportedStyles.
 Layout/SpaceInsideHashLiteralBraces:
+  Enabled: false
+
+Layout/EndOfLine:
   Enabled: false
 
 # Offense count: 1
